@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>中国大厂 AI 应用产品图谱 · 发布时间线 + 赛道图鉴（含官网）</title>
+<style>
+  :root{
+    --ink:#1a1c21; --paper:#f5f6f5; --card:#fff; --line:#dcdfdd; --muted:#70766f;
+    --byte:#2f6df6; --ali:#e8641b; --tencent:#0aa15f; --baidu:#3546c4;
+    --meituan:#c99a06; --jd:#c62828; --ks:#e0431f; --xhs:#e2364e; --ant:#1677ff;
+    --iflytek:#0a6ed1; --kunlun:#7b3fe4; --meitu:#e6397f; --qihoo:#00b34a; --other:#7a7f85;
+    --c-video:#8e44ad; --c-music:#c0392b; --c-code:#1f6fb2; --c-agent:#b3541e;
+    --c-search:#0e7d74; --c-office:#2c7a4b; --c-design:#c2410c; --c-hw:#5d6d3a; --c-vert:#a3266f;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--paper);color:var(--ink);
+    font-family:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+    font-size:14.5px;line-height:1.6;}
+  .wrap{max-width:1000px;margin:0 auto;padding:0 26px 80px;}
+
+  header{padding:46px 0 26px;border-bottom:3px solid var(--ink);}
+  .eyebrow{font-size:11px;letter-spacing:.3em;color:var(--c-music);font-weight:800;margin-bottom:10px;}
+  h1{font-size:clamp(25px,3.9vw,40px);font-weight:900;line-height:1.25;}
+  h1 .thin{font-weight:300;color:var(--muted);}
+  .sub{margin-top:10px;color:var(--muted);font-size:13px;max-width:730px;}
+  .jump{display:flex;gap:9px;margin-top:18px;flex-wrap:wrap;}
+  .jump a{font-size:12.5px;font-weight:700;color:var(--ink);text-decoration:none;
+    border:1.5px solid var(--ink);padding:6px 14px;}
+  .jump a:hover{background:var(--ink);color:#fff;}
+
+  .co{font-size:10px;font-weight:800;color:#fff;padding:1px 7px;border-radius:2px;white-space:nowrap;}
+  .co.byte{background:var(--byte);} .co.ali{background:var(--ali);} .co.tencent{background:var(--tencent);}
+  .co.baidu{background:var(--baidu);} .co.meituan{background:var(--meituan);}
+  .co.jd{background:var(--jd);} .co.ks{background:var(--ks);} .co.xhs{background:var(--xhs);}
+  .co.ant{background:var(--ant);} .co.iflytek{background:var(--iflytek);} .co.kunlun{background:var(--kunlun);}
+  .co.meitu{background:var(--meitu);} .co.qihoo{background:var(--qihoo);} .co.other{background:var(--other);}
+
+  .tk{display:inline-block;width:9px;height:9px;border-radius:50%;flex:none;margin-top:7px;}
+  .tk-video{background:var(--c-video);} .tk-music{background:var(--c-music);}
+  .tk-code{background:var(--c-code);} .tk-agent{background:var(--c-agent);}
+  .tk-search{background:var(--c-search);} .tk-office{background:var(--c-office);}
+  .tk-design{background:var(--c-design);} .tk-hw{background:var(--c-hw);} .tk-vert{background:var(--c-vert);}
+
+  section{padding-top:52px;}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px;}
+  .sec-no{font-size:12px;font-weight:800;color:var(--c-music);letter-spacing:.14em;}
+  h2{font-size:24px;font-weight:900;}
+  .sec-desc{color:var(--muted);font-size:12.5px;margin-bottom:20px;}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:11.5px;color:var(--muted);margin-bottom:20px;
+    padding:10px 14px;background:#ecefec;border-left:4px solid var(--ink);}
+  .legend span{display:flex;align-items:center;gap:5px;}
+  .legend .tk{margin-top:0;}
+
+  /* 时间线 */
+  .tl{position:relative;padding-left:26px;}
+  .tl::before{content:"";position:absolute;left:7px;top:4px;bottom:4px;width:3px;background:var(--ink);}
+  .year{position:relative;margin:32px 0 12px;}
+  .year:first-child{margin-top:0;}
+  .year::before{content:"";position:absolute;left:-25px;top:8px;width:13px;height:13px;
+    background:var(--c-music);border:3px solid var(--paper);border-radius:50%;box-shadow:0 0 0 2px var(--ink);}
+  .year h3{font-size:20px;font-weight:900;letter-spacing:.05em;}
+  .year .ynote{font-size:11.5px;color:var(--muted);}
+  .row{display:flex;gap:10px;align-items:flex-start;background:var(--card);border:1px solid var(--line);
+    padding:9px 14px;margin-bottom:7px;font-size:13px;}
+  .row .dt{font-weight:800;font-size:12px;color:var(--muted);width:44px;flex:none;padding-top:1px;}
+  .row .pn{font-weight:900;}
+  .row .co{margin:0 2px;vertical-align:1px;}
+  .row .dd{color:var(--muted);}
+  .row .dd b{color:var(--c-music);}
+
+  /* 图鉴 */
+  .track{margin-bottom:34px;}
+  .track-head{display:flex;align-items:center;gap:10px;padding-bottom:8px;border-bottom:2px solid var(--ink);margin-bottom:14px;flex-wrap:wrap;}
+  .track-head i{width:13px;height:13px;border-radius:50%;flex:none;}
+  .track-head .t{font-size:17px;font-weight:900;}
+  .track-head .n{font-size:11.5px;color:var(--muted);}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;}
+  .pc{background:var(--card);border:1px solid var(--line);padding:14px 15px 12px;display:flex;flex-direction:column;}
+  .pc .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:4px;}
+  .pc .name{font-size:15px;font-weight:900;line-height:1.3;}
+  .pc .pos{font-size:12px;color:var(--muted);flex:1;}
+  .pc .data{border-top:1px dashed var(--line);margin-top:8px;padding-top:7px;font-size:11.5px;}
+  .pc .data b{color:var(--c-music);}
+  .pc .foot{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:8px;}
+  .lk{font-size:11px;font-weight:800;color:#fff;background:var(--ink);text-decoration:none;
+    padding:3px 10px;border-radius:2px;white-space:nowrap;}
+  .lk:hover{background:var(--c-code);}
+  .lk.app{background:#b6bbb7;color:#3a3d3a;cursor:default;}
+  .pc.dead{background:#eef0ee;}
+  .pc.dead .name{text-decoration:line-through;color:var(--muted);}
+  .st{font-size:9.5px;font-weight:800;padding:2px 7px;white-space:nowrap;border-radius:2px;}
+  .st-lead{background:#f3e0f2;color:#8e44ad;}
+  .st-grow{background:#e2f2ef;color:var(--c-search);}
+  .st-new{background:#e9effa;color:var(--c-code);}
+  .st-dead{background:#e4e6e4;color:var(--muted);}
+
+  /* 判断 */
+  .ins{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--ink);
+    padding:20px 24px 18px;margin-bottom:14px;}
+  .ins .no{font-size:11px;font-weight:800;letter-spacing:.16em;color:var(--c-music);}
+  .ins h3{font-size:16.5px;font-weight:900;margin:3px 0 10px;}
+  .ins .grid{display:grid;grid-template-columns:56px 1fr;gap:6px 14px;font-size:13px;}
+  .ins .k{font-size:11px;font-weight:800;color:#fff;background:var(--muted);
+    padding:2px 0;text-align:center;height:fit-content;margin-top:2px;letter-spacing:.1em;}
+  .ins .k.j{background:var(--c-music);} .ins .k.q{background:var(--ink);}
+  .ins .v b{color:var(--c-music);}
+  .ins .v .hl{background:#fdf0ee;padding:0 3px;font-weight:700;}
+  .brief{background:var(--ink);color:#e9ebe9;padding:26px 28px;margin-top:26px;}
+  .brief h3{color:#fff;font-size:17px;font-weight:900;margin-bottom:6px;}
+  .brief h3 em{font-style:normal;color:#ff8a7a;}
+  .brief p{font-size:13px;color:#c6cbc7;margin-bottom:12px;}
+  .brief .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;}
+  .brief .step{border:1px solid #3a3d44;padding:14px 16px;}
+  .brief .step .s{font-size:11px;font-weight:800;color:#ff8a7a;letter-spacing:.12em;}
+  .brief .step .t{font-size:14px;font-weight:800;color:#fff;margin:3px 0 5px;}
+  .brief .step p{font-size:12px;margin:0;color:#b7bcb8;}
+
+  footer{margin-top:56px;padding-top:16px;border-top:1px solid var(--line);font-size:11px;color:var(--muted);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">STANDALONE AI APPLICATIONS · CHINA BIG TECH</div>
+    <h1>大厂 AI 应用产品图谱 <span class="thin">2023 – 2026.07</span></h1>
+    <p class="sub">聚焦<b>AI 应用</b>（视频/音乐/编程/Agent/搜索/办公/设计/硬件/垂直），<b>不含通用助手</b>（豆包、千问、元宝、DeepSeek 等）与 App 内嵌功能。含<b>「企业场景专题」</b>——面向商业广场/购物中心活动运营的管理、排期、内容、看板全链路工具。每张卡片附<b>官网直达链接</b>；带「App」/「集团方案」标记者无公开网页入口。</p>
+    <div class="jump"><a href="#tl">▼ 发布时间线</a><a href="#atlas">▼ 赛道产品图鉴</a><a href="#biz">▼ 企业场景专题</a><a href="#insight">▼ 核心判断</a></div>
+  </div>
+</header>
+
+<div class="wrap">
+
+<div style="background:#fff8f0;border:1px solid #f0d9bf;border-left:5px solid #d5382b;padding:16px 20px;margin-top:22px;font-size:12.5px;line-height:1.7;">
+  <div style="font-weight:900;font-size:13.5px;margin-bottom:6px;">📌 内容核查说明 · 更新于 2026 年 7 月</div>
+  本轮已重点核查视频生成与阿里 AI 组织两条线并修正：<b>①可灵</b>已于 2026.07 完成 30 亿美元融资、投后估值 180 亿美元（BAT 集体参投，计划 2027Q1 上市），原"拟分拆/营收口径"已更正；<b>②新增阿里 HappyHorse（快乐马）、Happy Oyster</b> 等 2026 年 4 月屠榜视频/世界模型；<b>③阿里 AI 组织</b>实为 2026.3.16 成立 <b>ATH 事业群</b>（吴泳铭直管，含悟空事业部等），原"7 月三线合一"表述无独立信源支撑，已移除；<b>④即梦</b>后端确认为字节 Seedance 2.0。<br>
+  <span style="color:#8a6d3b;">尚需留意：部分月活（MAU）与中小产品的运营/更名状态为 2026 年初口径，可能已变动；涉及关键决策请以各产品官网与最新公告为准。带「App/集团方案/内部工具」标记者无公开网页入口。</span>
+</div>
+
+<!-- ================= 时间线 ================= -->
+<section id="tl">
+  <div class="sec-head"><span class="sec-no">01</span><h2>AI 应用发布时间线</h2></div>
+  <p class="sec-desc">按首次发布/上线时间排列，圆点颜色代表赛道。可见清晰的三段节奏：视觉生成先行（24 年）→ 编程与出海（25 年）→ 企业级 Agent 与商业化（26 年）。</p>
+  <div class="legend">
+    <span><i class="tk tk-video"></i>视频·图像</span><span><i class="tk tk-music"></i>音乐·音频</span>
+    <span><i class="tk tk-code"></i>编程·应用生成</span><span><i class="tk tk-agent"></i>Agent·企业级</span>
+    <span><i class="tk tk-search"></i>AI搜索</span><span><i class="tk tk-office"></i>办公·效率</span>
+    <span><i class="tk tk-design"></i>设计·营销</span><span><i class="tk tk-hw"></i>硬件·数字人</span>
+    <span><i class="tk tk-vert"></i>垂直（教育/医疗/陪伴）</span>
+  </div>
+
+  <div class="tl">
+
+    <div class="year"><h3>2023</h3><div class="ynote">大模型元年 · 首批 AI 应用萌芽</div></div>
+    <div class="row"><span class="dt">07月</span><i class="tk tk-video"></i><div><span class="pn">妙鸭相机</span> <span class="co ali">阿里系</span><span class="dd">AI 写真现象级爆款，火后迅速沉寂——"爆款难留存"的最早样本</span></div></div>
+    <div class="row"><span class="dt">08月</span><i class="tk tk-code"></i><div><span class="pn">MarsCode / 豆包MarsCode</span> <span class="co byte">字节</span><span class="dd">字节早期 AI 编程工具，后被 Trae 接棒</span></div></div>
+
+    <div class="year"><h3>2024</h3><div class="ynote">视觉生成大爆发 · 垂类应用同步铺开</div></div>
+    <div class="row"><span class="dt">02月</span><i class="tk tk-agent"></i><div><span class="pn">扣子 Coze</span> <span class="co byte">字节</span><span class="dd">低门槛 Agent 搭建与分发平台，后进入 26Q1 月活 TOP20</span></div></div>
+    <div class="row"><span class="dt">05月</span><i class="tk tk-video"></i><div><span class="pn">即梦 AI</span> <span class="co byte">字节</span><span class="dd">原 Dreamina；26Q1 MAU <b>1352.5 万</b>居视频生成赛道第一</span></div></div>
+    <div class="row"><span class="dt">06月</span><i class="tk tk-music"></i><div><span class="pn">海绵音乐</span> <span class="co byte">字节</span><span class="dd">6.5 内测，中文人声处理见长，被视为国产 Suno</span></div></div>
+    <div class="row"><span class="dt">06月</span><i class="tk tk-video"></i><div><span class="pn">可灵 AI</span> <span class="co ks">快手</span><span class="dd">视频生成头牌，全球首个面向公众开放的影像级视频模型；2025 全年营收约 <b>10.4 亿</b>，两年后分拆融资（见下）</span></div></div>
+    <div class="row"><span class="dt">07月</span><i class="tk tk-video"></i><div><span class="pn">Vidu</span> <span class="co other">生数科技</span><span class="dd">清华系，全球首创"多主体参考"，动漫画风标杆</span></div></div>
+    <div class="row"><span class="dt">下半年</span><i class="tk tk-vert"></i><div><span class="pn">猫箱 / 豆包爱学</span> <span class="co byte">字节</span><span class="dd">AI 陪伴 + AI 教育；豆包爱学 26Q1 MAU <b>1434 万</b>居教育赛道第一</span></div></div>
+    <div class="row"><span class="dt">下半年</span><i class="tk tk-search"></i><div><span class="pn">点点</span> <span class="co xhs">小红书</span><span class="dd">独立 AI 搜索 App，承接月均 1.2 亿站内购物提问的种草决策</span></div></div>
+    <div class="row"><span class="dt">10月</span><i class="tk tk-agent"></i><div><span class="pn">ima / 元器</span> <span class="co tencent">腾讯</span><span class="dd">个人知识库 + Agent 开发平台，绑腾讯生态</span></div></div>
+
+    <div class="year"><h3>2025</h3><div class="ynote">编程崛起 · 出海试水 · 场景大厂入场</div></div>
+    <div class="row"><span class="dt">01月</span><i class="tk tk-code"></i><div><span class="pn">Trae</span> <span class="co byte">字节</span><span class="dd">国内首个 AI 原生 IDE，先出海后回国；注册 <b>600 万+</b>，市占 41.2% 领跑</span></div></div>
+    <div class="row"><span class="dt">03月</span><i class="tk tk-music"></i><div><span class="pn">天工 SkyMusic / Mureka</span> <span class="co kunlun">昆仑万维</span><span class="dd">国内首个音乐 SOTA 模型；Mureka O1 为全球首个 CoT 音乐推理模型</span></div></div>
+    <div class="row"><span class="dt">03月</span><i class="tk tk-code"></i><div><span class="pn">秒哒</span> <span class="co baidu">百度</span><span class="dd">零代码应用生成平台："一句话做应用"，多智能体协作</span></div></div>
+    <div class="row"><span class="dt">06月</span><i class="tk tk-vert"></i><div><span class="pn">AQ</span> <span class="co ant">蚂蚁</span><span class="dd">AI 健康应用：问诊导诊、报告解读，接入名医智能体</span></div></div>
+    <div class="row"><span class="dt">08月</span><i class="tk tk-code"></i><div><span class="pn">Qoder</span> <span class="co ali">阿里</span><span class="dd">8.22 面向全球发布的 Agentic 编程平台，对标并"超越" Cursor</span></div></div>
+    <div class="row"><span class="dt">09月</span><i class="tk tk-agent"></i><div><span class="pn">MuleRun 骡子快跑</span> <span class="co ali">阿里云</span><span class="dd">9.16 上线，"全球首个 AI Agent 交易市场"，隐藏阿里背景出海，后服务 <b>43 国</b></span></div></div>
+    <div class="row"><span class="dt">09月</span><i class="tk tk-vert"></i><div><span class="pn">他她它</span> <span class="co jd">京东</span><span class="dd">AI 助手 + AI 圈子社交 App，数字人 Agent 发"AI 朋友圈"</span></div></div>
+    <div class="row"><span class="dt">年底</span><i class="tk tk-search"></i><div><span class="pn">京东AI购</span> <span class="co jd">京东</span><span class="dd">独立对话式购物 App：输入需求直出商品卡片进支付，对标亚马逊 Rufus</span></div></div>
+
+    <div class="year"><h3>2026（1–7月）</h3><div class="ynote">阿里 ATH 大整合 · 视频屠榜 · 可灵分拆融资</div></div>
+    <div class="row"><span class="dt">01月</span><i class="tk tk-agent"></i><div><span class="pn">QoderWork</span> <span class="co ali">阿里</span><span class="dd">桌面 Agent + 7×24 云端数字员工；集团内部 DAU 与 Token 用量<b>双第一</b></span></div></div>
+    <div class="row"><span class="dt">01月</span><i class="tk tk-code"></i><div><span class="pn">CatPaw / NoCode</span> <span class="co meituan">美团</span><span class="dd">LongCat 驱动的 AI 编程 IDE 与对话式应用生成工具</span></div></div>
+    <div class="row"><span class="dt">03月</span><i class="tk tk-agent"></i><div><span class="pn">阿里成立 ATH 事业群</span> <span class="co ali">阿里</span><span class="dd">3.16 吴泳铭直管，整合通义实验室/MaaS/千问事业部/<b>悟空事业部</b>/AI 创新事业部</span></div></div>
+    <div class="row"><span class="dt">04月</span><i class="tk tk-video"></i><div><span class="pn">HappyHorse 快乐马屠榜</span> <span class="co ali">阿里</span><span class="dd">4.7 匿名空降 Artificial Analysis 登顶→4.11 阿里认领→4.30 开放 API；同期发布世界模型 Happy Oyster</span></div></div>
+    <div class="row"><span class="dt">04月</span><i class="tk tk-hw"></i><div><span class="pn">DingTalk A1 Pro</span> <span class="co ali">钉钉</span><span class="dd">4.30 开售：AI 录音硬件，180h 连续录音 + 200+ 纪要模板</span></div></div>
+    <div class="row"><span class="dt">05月</span><i class="tk tk-code"></i><div><span class="pn">通义灵码 → Qoder CN</span> <span class="co ali">阿里</span><span class="dd">5.20 品牌升级，Qoder 面向海外、Qoder CN 面向国内合规市场</span></div></div>
+    <div class="row"><span class="dt">05月</span><i class="tk tk-video"></i><div><span class="pn">可灵分拆传闻起</span> <span class="co ks">快手</span><span class="dd">5.11 晚点爆料拟 200 亿美元估值分拆融资 20 亿；快手 5.12 公告确认评估中</span></div></div>
+    <div class="row"><span class="dt">06月</span><i class="tk tk-vert"></i><div><span class="pn">Tabbit 浏览器</span> <span class="co meituan">美团</span><span class="dd">GN06 团队（原光年之外）主推的 AI 浏览器，对标 Dia / Comet</span></div></div>
+    <div class="row"><span class="dt">07月</span><i class="tk tk-video"></i><div><span class="pn">可灵完成首轮融资</span> <span class="co ks">快手</span><span class="dd">7 月初完成 <b>30 亿美元</b>融资、投后估值 <b>180 亿美元</b>，BAT 集体参投，计划 2027Q1 上市，快手承诺 5 年不竞争</span></div></div>
+
+  </div>
+</section>
+
+<!-- ================= 图鉴 ================= -->
+<section id="atlas">
+  <div class="sec-head"><span class="sec-no">02</span><h2>赛道产品图鉴（含官网链接）</h2></div>
+  <p class="sec-desc">九大 AI 应用赛道，同赛道产品并列即横向对比。点击卡片右下角「官网↗」直达产品主页。</p>
+
+  <!-- 视频图像 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-video)"></i><span class="t">① AI 视频·图像生成</span><span class="n">三强格局：字节 Seedance 2.0 / 阿里 HappyHorse / 快手可灵（已 180 亿美元估值分拆）</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">可灵 AI <span class="co ks">快手</span></span><span class="st st-lead">已完成融资</span></div><div class="pos">视频生成头牌，"AIGC+UGC"双轮，2026.07 从快手分拆完成独立融资</div><div class="data">首轮融资 <b>30 亿美元</b>、投后估值 <b>180 亿美元</b>（BAT 集体参投）· 全球用户破 <b>1 亿</b> · ARR 5 亿美元 · 计划 2027Q1 上市</div><div class="foot"><a class="lk" href="https://klingai.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">即梦 AI <span class="co byte">字节</span></span><span class="st st-lead">App端第一</span></div><div class="pos">图像+视频一体创作，后端 Seedance 2.0（2026.2 曾登全球第一），豆包导流</div><div class="data">26Q1 App 端 MAU/下载居赛道首位 · Seedance 2.0 高峰 9 万人排队</div><div class="foot"><a class="lk" href="https://jimeng.jianying.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">HappyHorse 快乐马 <span class="co ali">阿里</span></span><span class="st st-lead">屠榜黑马</span></div><div class="pos">阿里 ATH 创新事业部（张迪/郑波团队）音视频联合生成模型，"先屠榜后揭牌"</div><div class="data">2026.4 匿名登顶 Artificial Analysis 全球视频榜 · 150亿参数开源 · 4.30 开放 API</div><div class="foot"><a class="lk" href="https://tongyi.aliyun.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">通义万相 Wan <span class="co ali">阿里</span></span><span class="st st-grow">开源路线</span></div><div class="pos">阿里视频/图像双线之一：万相走开源服务开发者，与 HappyHorse（商业线）双线并进</div><div class="data">Wan 2.x 系列开源，免费额度充足，同归 ATH 事业群</div><div class="foot"><a class="lk" href="https://tongyi.aliyun.com/wanxiang" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">Happy Oyster <span class="co ali">阿里</span></span><span class="st st-new">世界模型</span></div><div class="pos">阿里 AI 创新事业部世界模型，从文本/图像生成可交互 3D 场景与长视频</div><div class="data">2026.4.16 发布，最长 3 分钟沉浸式视频，入局世界模型赛道</div><div class="foot"><a class="lk" href="https://tongyi.aliyun.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">Vidu <span class="co other">生数科技</span></span><span class="st st-grow">一致性标杆</span></div><div class="pos">清华系，全球首创"多主体参考"；阿里领投 B 轮 20 亿元，长期居全球榜前 10</div><div class="data">2024.04 对标 Sora 发布，动漫画风与物理模拟见长</div><div class="foot"><a class="lk" href="https://www.vidu.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">混元图像/视频 <span class="co tencent">腾讯</span></span><span class="st st-grow">开源</span></div><div class="pos">HunyuanVideo/Custom，混元大模型的视觉生成线</div><div class="data">开源社区活跃，主体一致性 Custom 版本</div><div class="foot"><a class="lk" href="https://hunyuan.tencent.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">小云雀 <span class="co byte">字节</span></span><span class="st st-new">对话式创作</span></div><div class="pos">对话式全能创作助手，集成 Seedream 5.0 / Seedance 2.0</div><div class="data">从脚本分析到画面生成的一站式流程</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc"><div class="top"><span class="name">星绘 <span class="co byte">字节</span></span><span class="st st-new">AI写真</span></div><div class="pos">AI 形象/写真独立 App，接棒"妙鸭"品类</div><div class="data">字节视觉矩阵成员</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc dead"><div class="top"><span class="name">妙鸭相机 <span class="co ali">阿里系</span></span><span class="st st-dead">沉寂</span></div><div class="pos">2023 AI 写真爆款，火后迅速冷却</div><div class="data">"爆款≠留存"的经典样本</div><div class="foot"><span class="lk app">已淡出</span></div></div>
+    </div>
+  </div>
+
+  <!-- 音乐音频 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-music)"></i><span class="t">② AI 音乐·音频</span><span class="n">中文人声是主战场，对标 Suno</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">海绵音乐 <span class="co byte">字节</span></span><span class="st st-lead">中文人声强</span></div><div class="pos">一句话生成完整歌曲，中文吐字清晰度优于 Suno，完全免费</div><div class="data">支持 Web+iOS+Android，可二次编辑</div><div class="foot"><a class="lk" href="https://www.haimian.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">天工 SkyMusic <span class="co kunlun">昆仑万维</span></span><span class="st st-grow">国内首个SOTA</span></div><div class="pos">国内首个音乐 SOTA 模型，端到端生成人声/乐器/旋律</div><div class="data">声称超越 Suno V3 · 支持方言歌曲</div><div class="foot"><a class="lk" href="https://www.tiangong.cn/music" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">Mureka <span class="co kunlun">昆仑万维</span></span><span class="st st-grow">推理大模型</span></div><div class="pos">Mureka O1 全球首个 CoT 音乐推理模型，V7.5 支持 10 语言</div><div class="data">中文演唱超海外同类，含分轨/母带功能</div><div class="foot"><a class="lk" href="https://www.mureka.ai" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">讯飞音乐/绘文 <span class="co iflytek">科大讯飞</span></span><span class="st st-new">语音基因</span></div><div class="pos">依托讯飞语音合成能力的音频/配音/音乐生成</div><div class="data">泛阅读、有声书、广播级语音合成</div><div class="foot"><a class="lk" href="https://peiyin.xfyun.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+    </div>
+  </div>
+
+  <!-- 编程 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-code)"></i><span class="t">③ AI 编程·应用生成</span><span class="n">市场规模 24.5 亿（+187%）；一超两强多极</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">Trae <span class="co byte">字节</span></span><span class="st st-lead">市占41%</span></div><div class="pos">国内首个 AI 原生 IDE，SOLO 智能体全流程编码</div><div class="data">注册 <b>600万+</b> · 市占 <b>41.2%</b> · 中文理解比 Cursor 高18%</div><div class="foot"><a class="lk" href="https://www.trae.com.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">Qoder <span class="co ali">阿里</span></span><span class="st st-lead">海外Agentic</span></div><div class="pos">面向全球的 Agentic 编程平台，Quest 模式端到端交付</div><div class="data">仓库级索引 + 模型自动路由，被称"国产 Cursor 超越者"</div><div class="foot"><a class="lk" href="https://qoder.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">Qoder CN（原通义灵码）<span class="co ali">阿里云</span></span><span class="st st-grow">国内合规</span></div><div class="pos">面向金融/政务的合规版，国产模型+国内部署+私有VPC</div><div class="data">市占 <b>18.5%</b> · 公安部三级等保认证</div><div class="foot"><a class="lk" href="https://lingma.aliyun.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">文心快码 Comate <span class="co baidu">百度</span></span><span class="st st-grow">规范驱动</span></div><div class="pos">多智能体矩阵，Figma 转代码，SPEC 白盒流程低幻觉</div><div class="data">市占 <b>12.3%</b> · IDC 评测 9 维度 8 项满分</div><div class="foot"><a class="lk" href="https://comate.baidu.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">CodeBuddy <span class="co tencent">腾讯</span></span><span class="st st-new">微信生态</span></div><div class="pos">独立 IDE + 腾讯云/微信小程序生态集成</div><div class="data">26.5 企业版提价 78→<b>198元</b>/人/月</div><div class="foot"><a class="lk" href="https://copilot.tencent.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">CodeGeeX <span class="co other">智谱</span></span><span class="st st-new">开源免费</span></div><div class="pos">唯一完全免费+开源，可本地部署主打数据主权</div><div class="data">支持 300+ 语言 · 金融/学生群体首选</div><div class="foot"><a class="lk" href="https://codegeex.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">秒哒 <span class="co baidu">百度</span></span><span class="st st-new">零代码</span></div><div class="pos">"一句话做应用"，多智能体协作的无代码平台，面向非程序员</div><div class="data">调用多种工具与 API，李彦宏力推</div><div class="foot"><a class="lk" href="https://miaoda.baidu.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">CatPaw / NoCode <span class="co meituan">美团</span></span><span class="st st-new">LongCat驱动</span></div><div class="pos">AI 编程 IDE + 对话式应用生成，美团 AI 编程对外产品</div><div class="data">基于自研 LongCat 模型</div><div class="foot"><a class="lk" href="https://nocode.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+    </div>
+  </div>
+
+  <!-- Agent -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-agent)"></i><span class="t">④ AI Agent·企业级</span><span class="n">2026 主战场：阿里 ATH 事业群统合（悟空/千问/通义等）vs 腾讯全家桶</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">QoderWork <span class="co ali">阿里</span></span><span class="st st-lead">桌面Agent</span></div><div class="pos">桌面 Agent 操作本地应用/文件 + 云端数字员工，安全沙箱</div><div class="data">集团内部 DAU 与 Token 用量<b>双第一</b>（吴泳铭）· 归入 ATH 事业群</div><div class="foot"><a class="lk" href="https://qoder.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">悟空 <span class="co ali">钉钉</span></span><span class="st st-grow">企业安全</span></div><div class="pos">Agent 继承企业权限、原生操作钉钉能力，"沟通即执行"</div><div class="data">内置 <b>2000万+</b> 企业组织的钉钉</div><div class="foot"><a class="lk" href="https://www.dingtalk.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">MuleRun 骡子快跑 <span class="co ali">阿里云</span></span><span class="st st-grow">全球化</span></div><div class="pos">Agent 交易市场 + 云端虚拟机"数字员工"，先出海验证再收编（隐藏阿里背景上线）</div><div class="data">2025.09 上线，阿里云 Agent 出海产品，悟空事业部同归 ATH</div><div class="foot"><a class="lk" href="https://mulerun.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">扣子 Coze <span class="co byte">字节</span></span><span class="st st-grow">开发者生态</span></div><div class="pos">低门槛 Agent 搭建与分发平台（+扣子空间通用 Agent）</div><div class="data">进入 26Q1 MAU <b>TOP20</b>，少数独立上榜的 Agent 平台</div><div class="foot"><a class="lk" href="https://www.coze.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">元器 <span class="co tencent">腾讯</span></span><span class="st st-new">智能体平台</span></div><div class="pos">腾讯智能体开发与分发平台，绑微信生态</div><div class="data">混元驱动，支持一键发布到 QQ/微信</div><div class="foot"><a class="lk" href="https://yuanqi.tencent.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">ima <span class="co tencent">腾讯</span></span><span class="st st-new">知识库</span></div><div class="pos">个人/团队知识库 + 知识 Agent，打通腾讯文档</div><div class="data">26.04 升级 Copilot 能力</div><div class="foot"><a class="lk" href="https://ima.qq.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    </div>
+  </div>
+
+  <!-- AI搜索 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-search)"></i><span class="t">⑤ AI 搜索</span><span class="n">独立搜索入口：存量派 vs 内容派 vs 多模型派</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">夸克 <span class="co ali">阿里</span></span><span class="st st-lead">存量最大</span></div><div class="pos">AI 搜索+网盘+文档一体的"AI 全能助手"，年轻用户基本盘</div><div class="data">阿里 C 端 AI 双入口之一（与千问分工）</div><div class="foot"><a class="lk" href="https://www.quark.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">秘塔 AI 搜索 <span class="co other">秘塔科技</span></span><span class="st st-grow">无广告</span></div><div class="pos">无广告、重结构化输出与信源，专业用户口碑标杆</div><div class="data">"没有广告，直达结果"的差异化定位</div><div class="foot"><a class="lk" href="https://metaso.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">点点 <span class="co xhs">小红书</span></span><span class="st st-grow">内容派</span></div><div class="pos">独立 AI 搜索，笔记生态为语料，承接种草决策</div><div class="data">月均 <b>1.2亿</b> 用户站内问购物 · 转化率高30%+</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc"><div class="top"><span class="name">纳米 AI 搜索 <span class="co qihoo">360</span></span><span class="st st-new">多模型</span></div><div class="pos">聚合多家大模型的 AI 搜索独立 App，多模型协同答题</div><div class="data">360 的 AI 搜索转型主力</div><div class="foot"><a class="lk" href="https://www.n.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">京东AI购 <span class="co jd">京东</span></span><span class="st st-new">购物闭环</span></div><div class="pos">独立对话式购物 App，砍掉商品列表直达支付</div><div class="data">对标亚马逊 Rufus（2.5亿用户、下单率+60%）</div><div class="foot"><span class="lk app">App</span></div></div>
+    </div>
+  </div>
+
+  <!-- 办公效率 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-office)"></i><span class="t">⑥ AI 办公·文档·效率</span><span class="n">Office 智能体化：文档/PPT/表格一键生成</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">天工 Skywork <span class="co kunlun">昆仑万维</span></span><span class="st st-grow">DeepResearch</span></div><div class="pos">AI Office 智能体，3+1 专家 Agent 生成文档/PPT/表格/网页</div><div class="data">科研级深度研究，覆盖办公/学习全场景</div><div class="foot"><a class="lk" href="https://www.tiangong.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">讯飞智文 <span class="co iflytek">科大讯飞</span></span><span class="st st-grow">PPT/文档</span></div><div class="pos">一句话生成 PPT 与文档，语音基因加持的办公生成工具</div><div class="data">教育/政企场景渗透深</div><div class="foot"><a class="lk" href="https://zhiwen.xfyun.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">办公小浣熊 <span class="co other">商汤</span></span><span class="st st-new">数据分析</span></div><div class="pos">对话式数据分析与办公助手，自然语言查数出图</div><div class="data">商汤 C 端标杆产品之一</div><div class="foot"><a class="lk" href="https://xiaohuanxiong.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">咔片 PPT <span class="co other">第三方</span></span><span class="st st-new">AI PPT</span></div><div class="pos">AI 一键生成美化 PPT，模板生态丰富</div><div class="data">AI PPT 赛道热门独立产品</div><div class="foot"><a class="lk" href="https://www.cappt.cc" target="_blank" rel="noopener">官网↗</a></div></div>
+    </div>
+  </div>
+
+  <!-- 设计营销 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-design)"></i><span class="t">⑦ AI 设计·营销·电商</span><span class="n">把"模特/摄影/修图/设计"压缩成几次点击</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">美图 WHEE / 美图设计室 <span class="co meitu">美图</span></span><span class="st st-lead">影像老兵</span></div><div class="pos">AI 图像生成+商业设计，美图影像积累转化的 AIGC 平台</div><div class="data">电商商品图、AI 模特、设计模板</div><div class="foot"><a class="lk" href="https://www.whee.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">稿定 AI <span class="co other">稿定科技</span></span><span class="st st-grow">电商设计</span></div><div class="pos">电商视觉一站式：抠图/改图/AI 模特/商品视频</div><div class="data">中小商家营销素材批量生产</div><div class="foot"><a class="lk" href="https://www.gaoding.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">堆友 AI <span class="co ali">阿里</span></span><span class="st st-grow">设计师生态</span></div><div class="pos">阿里设计平台的 AIGC 工具，AI 生图+3D+素材库</div><div class="data">面向设计师群体</div><div class="foot"><a class="lk" href="https://d.design" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">绘蛙 <span class="co ali">阿里</span></span><span class="st st-new">电商营销</span></div><div class="pos">面向电商/达人的 AI 商品图与营销文案工具</div><div class="data">1688/淘系商家场景</div><div class="foot"><a class="lk" href="https://www.ihuiwa.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">LiblibAI <span class="co other">第三方</span></span><span class="st st-grow">模型社区</span></div><div class="pos">中国最大 AI 图像模型分享社区+在线生成，创作者生态</div><div class="data">对标 Civitai，海量 LoRA 模型</div><div class="foot"><a class="lk" href="https://www.liblib.art" target="_blank" rel="noopener">官网↗</a></div></div>
+    </div>
+  </div>
+
+  <!-- 硬件数字人 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-hw)"></i><span class="t">⑧ AI 硬件·数字人</span><span class="n">直接产生 GMV / 现金收入的赛道</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">京东数字人 <span class="co jd">京东</span></span><span class="st st-lead">商业化标杆</span></div><div class="pos">全天候低成本店播；AI 原生数字人（形象/语音/动作全AI生成）</div><div class="data">618 超 <b>1.7万</b>品牌使用 · "采销东哥"GMV <b>140亿</b></div><div class="foot"><a class="lk" href="https://ai.jd.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">JoyInside <span class="co jd">京东</span></span><span class="st st-grow">硬件平台</span></div><div class="pos">AI 硬件/玩具平台，背后是具身智能野心</div><div class="data">已助 <b>40+</b> 品牌推AI产品 · 全年龄段AI玩具</div><div class="foot"><a class="lk" href="https://ai.jd.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">DingTalk A1 系列 <span class="co ali">钉钉</span></span><span class="st st-new">办公硬件</span></div><div class="pos">AI 录音硬件：转写+纪要+多语种翻译</div><div class="data">A1 Pro：180h 录音 · <b>200+</b> 纪要模板</div><div class="foot"><a class="lk" href="https://www.dingtalk.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">Ola Friend <span class="co byte">字节</span></span><span class="st st-new">AI耳机</span></div><div class="pos">豆包 AI 耳机，语音直连助手，字节 AI 硬件入口</div><div class="data">开放式耳机形态，主打随身 AI</div><div class="foot"><a class="lk" href="https://www.doubao.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    </div>
+  </div>
+
+  <!-- 垂直 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--c-vert)"></i><span class="t">⑨ 垂直应用（教育/医疗/陪伴/浏览器）</span><span class="n">高死亡率区域：活下来的都绑强生态或刚需</span></div>
+    <div class="cards">
+      <div class="pc"><div class="top"><span class="name">豆包爱学 <span class="co byte">字节</span></span><span class="st st-lead">教育第一</span></div><div class="pos">学科教育：拍照答疑、AI 辅导</div><div class="data">26Q1 MAU <b>1434.4万</b>，赛道榜首</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc"><div class="top"><span class="name">猫箱 <span class="co byte">字节</span></span><span class="st st-grow">陪伴头部</span></div><div class="pos">AI 角色互动/陪伴社区</div><div class="data">进入 26Q1 MAU TOP20</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc"><div class="top"><span class="name">星野 <span class="co other">MiniMax</span></span><span class="st st-grow">陪伴</span></div><div class="pos">AI 角色扮演/陪伴，MiniMax C 端代表作</div><div class="data">与出海版 Talkie 并行</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc"><div class="top"><span class="name">小荷 AI 医生 <span class="co byte">字节</span></span><span class="st st-grow">医疗</span></div><div class="pos">AI 问诊咨询独立应用</div><div class="data">进入 26Q1 MAU TOP20</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc"><div class="top"><span class="name">AQ <span class="co ant">蚂蚁</span></span><span class="st st-grow">健康</span></div><div class="pos">AI 健康管家：导诊、报告解读、名医智能体</div><div class="data">蚂蚁"AI三件套"之一</div><div class="foot"><span class="lk app">App</span></div></div>
+      <div class="pc"><div class="top"><span class="name">知医 <span class="co jd">京东健康</span></span><span class="st st-new">循证医学</span></div><div class="pos">面向医生的临床决策+科研支持</div><div class="data">整合<b>千万级</b>权威文献 · 接入京东医生App</div><div class="foot"><a class="lk" href="https://healthai.jd.com" target="_blank" rel="noopener">官网↗</a></div></div>
+      <div class="pc"><div class="top"><span class="name">Tabbit 浏览器 <span class="co meituan">美团</span></span><span class="st st-new">AI浏览器</span></div><div class="pos">GN06 团队主推的 AI 浏览器</div><div class="data">2026.06 上线，对标 Dia / Comet</div><div class="foot"><span class="lk app">桌面端</span></div></div>
+      <div class="pc"><div class="top"><span class="name">他她它 <span class="co jd">京东</span></span><span class="st st-new">AI社交</span></div><div class="pos">AI 助手+AI 圈子：数字人 Agent 发"AI朋友圈"</div><div class="data">2025.09 发布，试水期</div><div class="foot"><span class="lk app">App</span></div></div>
+    </div>
+  </div>
+
+  <!-- 墓碑 -->
+  <div class="track">
+    <div class="track-head"><i style="background:var(--other)"></i><span class="t">⑩ 墓碑区（已淡出/关停）</span><span class="n">失败本身就是调研信息：共性是缺生态导流或高频场景</span></div>
+    <div class="cards">
+      <div class="pc dead"><div class="top"><span class="name">妙刷 <span class="co meituan">美团</span></span><span class="st st-dead">淡出</span></div><div class="pos">GN06 团队图文视频生成试水</div><div class="data">团队已转向 Tabbit 浏览器</div><div class="foot"><span class="lk app">—</span></div></div>
+      <div class="pc dead"><div class="top"><span class="name">WOW <span class="co meituan">美团</span></span><span class="st st-dead">淡出</span></div><div class="pos">AI 情感陪伴应用</div><div class="data">营销退潮即冷，无生态导流</div><div class="foot"><span class="lk app">—</span></div></div>
+      <div class="pc dead"><div class="top"><span class="name">心响 <span class="co baidu">百度</span></span><span class="st st-dead">边缘化</span></div><div class="pos">通用超级智能体 App（2025.04）</div><div class="data">C 端通用 Agent 的失败尝试</div><div class="foot"><span class="lk app">—</span></div></div>
+      <div class="pc dead"><div class="top"><span class="name">月匣 <span class="co baidu">百度</span></span><span class="st st-dead">边缘化</span></div><div class="pos">AI 社交/情感陪伴</div><div class="data">与心响同批边缘化</div><div class="foot"><span class="lk app">—</span></div></div>
+      <div class="pc dead"><div class="top"><span class="name">腾讯智影 <span class="co tencent">腾讯</span></span><span class="st st-dead">已关停</span></div><div class="pos">智能创作/数字人视频工具</div><div class="data">大厂 AI 产品收缩样本</div><div class="foot"><span class="lk app">—</span></div></div>
+      <div class="pc dead"><div class="top"><span class="name">时光相册/小悟空 <span class="co byte">字节</span></span><span class="st st-dead">放弃</span></div><div class="pos">字节早期 AI 工具类试水</div><div class="data">字节也有失败品——矩阵是筛出来的</div><div class="foot"><span class="lk app">—</span></div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= 企业场景专题 ================= -->
+<section id="biz">
+  <div class="sec-head"><span class="sec-no">02.5</span><h2>企业场景专题 · 商业广场活动运营</h2></div>
+  <p class="sec-desc">面向购物中心/商业广场做活动的全链路 AI 工具，按<b>企业管理 → 活动排期 → 内容产出 → 数据看板</b>四个环节梳理，并单列服务商业地产的垂直 AI 厂商。</p>
+
+  <style>
+    .realbox{background:#fff;border:1px solid var(--line);border-top:4px solid var(--c-agent);padding:20px 24px;margin-bottom:24px;}
+    .realbox h4{font-size:14.5px;font-weight:900;margin-bottom:10px;}
+    .realbox h4 span{font-size:11px;font-weight:600;color:var(--muted);}
+    .rstat{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:12px;}
+    .rstat .s{border-left:3px solid var(--c-agent);padding-left:10px;}
+    .rstat .s b{font-size:22px;font-weight:900;display:block;line-height:1.1;}
+    .rstat .s span{font-size:11px;color:var(--muted);}
+    .rcase{font-size:12px;color:#444;border-top:1px dashed var(--line);padding-top:10px;}
+    .rcase b{color:var(--c-agent);}
+    .subt{font-size:14px;font-weight:900;margin:22px 0 12px;padding:7px 12px;background:var(--ink);color:#fff;display:inline-block;}
+    .subt .em{color:#ffca8a;font-weight:700;font-size:11px;margin-left:6px;}
+  </style>
+
+  <div class="realbox">
+    <h4>一线运营者的 AI 使用实况 <span>· 赢商tech / 36氪 2026.03 商业地产 AI 调研</span></h4>
+    <div class="rstat">
+      <div class="s"><b>73%</b><span>从业者"几乎每天用 AI，离不开"</span></div>
+      <div class="s"><b>84%</b><span>最高频用途是"让 AI 出文案、出海报"</span></div>
+      <div class="s"><b>58%</b><span>"还没搞过 AI 活动，但想试试"</span></div>
+      <div class="s"><b>#1 障碍</b><span>担心客流/销售/会员核心数据安全</span></div>
+    </div>
+    <div class="rcase">落地案例：K11 用 <b>Aibee AI Mall OS</b>，促销活动礼品券转化率 +75%、活动 GMV +111%；印力"印嘉科技"上线<b>会员 AI 智能体</b>（积分/找店/停车对话式）；华润用 AI 分析客流+CRM，并<b>AI 生成活动 BGM 规避版权费</b>（100+ 项目规模效应显著）；龙湖自研 <b>AI 审批催办小工具</b>，超时自动催办甚至致电审批人。使用场景排序：出文案/海报 → 策划活动内容 → 分析会员兴趣。</div>
+  </div>
+
+  <!-- A 企业管理 -->
+  <span class="subt">A · 企业管理与协同<span class="em">OA / 审批 / HR / 知识库</span></span>
+  <div class="cards">
+    <div class="pc"><div class="top"><span class="name">钉钉 + 悟空 <span class="co ali">阿里</span></span><span class="st st-lead">权限继承</span></div><div class="pos">Agent 自动继承企业权限、原生操作钉钉审批/OA/HR，"沟通即执行"</div><div class="data">内置 <b>2000万+</b> 企业组织，适合连锁商管统一管理</div><div class="foot"><a class="lk" href="https://www.dingtalk.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">飞书 + 智能伙伴 <span class="co byte">字节</span></span><span class="st st-grow">知识+协同</span></div><div class="pos">知识问答、会议纪要、多维表格自动化，中大型运营团队协同利器</div><div class="data">飞书智能伙伴可搭场景化 Agent</div><div class="foot"><a class="lk" href="https://www.feishu.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">企业微信 + AI <span class="co tencent">腾讯</span></span><span class="st st-grow">连接会员</span></div><div class="pos">员工侧协同 + 直连微信会员/导购，私域与内部管理打通</div><div class="data">商场"企微+会员"运营的标配底座</div><div class="foot"><a class="lk" href="https://work.weixin.qq.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">龙湖 AI 催办 <span class="co other">龙湖·自研</span></span><span class="st st-new">流程提效</span></div><div class="pos">审批超时自动催办、致电审批人，用 AI 当"催促者"减少人际内耗</div><div class="data">科技含量不高但员工认同度高的落地样本</div><div class="foot"><span class="lk app">内部工具</span></div></div>
+  </div>
+
+  <!-- B 活动排期 -->
+  <span class="subt">B · 活动排期与项目管理<span class="em">档期表 / 任务分派 / 进度追踪</span></span>
+  <div class="cards">
+    <div class="pc"><div class="top"><span class="name">飞书多维表格 <span class="co byte">字节</span></span><span class="st st-lead">活动排期首选</span></div><div class="pos">档期表/任务看板+自动化+AI 字段，一张表管完活动全流程</div><div class="data">可自动汇总进度、AI 生成活动清单与提醒</div><div class="foot"><a class="lk" href="https://www.feishu.cn/product/base" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">Teambition <span class="co ali">阿里</span></span><span class="st st-grow">项目排期</span></div><div class="pos">钉钉旗下项目管理，甘特图/里程碑排布活动筹备节点</div><div class="data">适合多活动并行的档期与资源协调</div><div class="foot"><a class="lk" href="https://www.teambition.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">腾讯乐享 <span class="co tencent">腾讯</span></span><span class="st st-new">活动+员工</span></div><div class="pos">企业活动运营+知识+培训平台，可承接内部活动报名与互动</div><div class="data">与企微打通，适合门店/商户端触达</div><div class="foot"><a class="lk" href="https://lexiang.qq.com" target="_blank" rel="noopener">官网↗</a></div></div>
+  </div>
+
+  <!-- C 内容产出 -->
+  <span class="subt">C · 内容产出<span class="em">海报 / 文案 / 活动短视频 / AI 互动装置</span></span>
+  <div class="cards">
+    <div class="pc"><div class="top"><span class="name">巨量即创 <span class="co byte">字节</span></span><span class="st st-lead">营销素材工厂</span></div><div class="pos">批量生成活动短视频/图文/口播，本地生活与电商素材利器</div><div class="data">巨量引擎旗下，一键起量活动素材</div><div class="foot"><a class="lk" href="https://aic.oceanengine.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">腾讯广告妙思 <span class="co tencent">腾讯</span></span><span class="st st-grow">广告创意</span></div><div class="pos">AI 生成广告图/视频创意，混元驱动，投放素材快速产出</div><div class="data">绝味 agent 案例活动点击率比人工高 40%</div><div class="foot"><a class="lk" href="https://e.qq.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">美图设计室 <span class="co meitu">美图</span></span><span class="st st-grow">商用设计</span></div><div class="pos">AI 海报/主KV/商品图，运营小白也能出活动物料</div><div class="data">模板生态丰富，电商与线下活动通用</div><div class="foot"><a class="lk" href="https://www.designkit.cn" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">绘蛙 / 万相实验室 <span class="co ali">阿里</span></span><span class="st st-new">电商营销</span></div><div class="pos">AI 商品图+营销文案+AI 模特，商户招商与活动物料</div><div class="data">阿里妈妈生态，1688/淘系商家场景</div><div class="foot"><a class="lk" href="https://www.ihuiwa.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">即梦 / 可灵 <span class="co byte">字节</span>/<span class="co ks">快手</span></span><span class="st st-new">活动短视频/装置</span></div><div class="pos">AI 视频用于活动预热、大屏互动、AI 体验装置内容</div><div class="data">调研中"AI 互动装置/体验活动"是已落地主流形态</div><div class="foot"><a class="lk" href="https://jimeng.jianying.com" target="_blank" rel="noopener">官网↗</a></div></div>
+  </div>
+
+  <!-- D 数据看板 -->
+  <span class="subt">D · 数据看板与客流分析<span class="em">经营驾驶舱 / 客流 / 会员洞察 / ChatBI</span></span>
+  <div class="cards">
+    <div class="pc"><div class="top"><span class="name">帆软 FineBI + FineChatBI <span class="co other">帆软</span></span><span class="st st-lead">本土BI龙头</span></div><div class="pos">拖拽式经营看板+对话式问数，中国式复杂报表与数据填报见长</div><div class="data">政企/零售市占领先，支持信创合规部署</div><div class="foot"><a class="lk" href="https://www.fanruan.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">观远 ChatBI <span class="co other">观远数据</span></span><span class="st st-grow">零售快消深耕</span></div><div class="pos">LLM 问答式 BI，自然语言到自动出图；多门店多渠道分析模板</div><div class="data">BI+AI 融合代表，<b>500+</b> 零售快消客户</div><div class="foot"><a class="lk" href="https://www.guandata.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">Quick BI <span class="co ali">阿里云</span></span><span class="st st-grow">智能小Q</span></div><div class="pos">阿里云 BI，"智能小 Q"自然语言分析，接阿里数据生态</div><div class="data">连续入选 Gartner BI 魔力象限的中国产品</div><div class="foot"><a class="lk" href="https://www.aliyun.com/product/bigdata/quickbi" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">汇纳科技 <span class="co other">汇纳</span></span><span class="st st-new">客流专家</span></div><div class="pos">机器视觉客流统计+动线/热度分析+"千目"大屏互动，数字商场老兵</div><div class="data">恒隆等高端商业长期合作，客流数据颗粒度细</div><div class="foot"><a class="lk" href="https://winnerinf.com" target="_blank" rel="noopener">官网↗</a></div></div>
+  </div>
+
+  <!-- E 垂直厂商 -->
+  <span class="subt">E · 商业地产垂直 AI 厂商 / 方案<span class="em">Mall OS / 智慧商管 / 会员智能体</span></span>
+  <div class="cards">
+    <div class="pc"><div class="top"><span class="name">Aibee AI Mall OS <span class="co other">爱笔智能</span></span><span class="st st-lead">Mall OS标杆</span></div><div class="pos">线下空间数字化整体方案，"人-货-场-车"数据平台+前台交互/AR导航/营销</div><div class="data">K11 标配，促销转化 <b>+75%</b>、活动 GMV <b>+111%</b></div><div class="foot"><a class="lk" href="https://aibee.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">明源云沃享 <span class="co other">明源云</span></span><span class="st st-grow">商管运营</span></div><div class="pos">聚焦购物中心商管的会员经营与商户服务，营销自动化闭环</div><div class="data">合作购物中心超 <b>300 家</b></div><div class="foot"><a class="lk" href="https://www.mingyuanyun.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">海鼎科技 <span class="co other">海鼎</span></span><span class="st st-grow">商业地产专属</span></div><div class="pos">聚焦商业地产近 30 年，资管/运营/营销/数据智慧化四维，商管+会员+营销全景</div><div class="data">服务客户 <b>1000+</b>，商业地产 Top50 覆盖率 <b>60%</b>（恒隆/太古/九龙仓/印力）</div><div class="foot"><a class="lk" href="https://www.hdkj123.com" target="_blank" rel="noopener">官网↗</a></div></div>
+    <div class="pc"><div class="top"><span class="name">印嘉科技 会员智能体 <span class="co other">印力·自研</span></span><span class="st st-new">会员对话式</span></div><div class="pos">把会员服务系统改成对话形式，覆盖积分/找店/停车缴费</div><div class="data">印力集团旗下科技子公司自研</div><div class="foot"><span class="lk app">集团方案</span></div></div>
+    <div class="pc"><div class="top"><span class="name">TK Mates <span class="co other">太古·自研</span></span><span class="st st-new">集团自研</span></div><div class="pos">太古购物中心 AI 产品，上线时近一半时间在打磨数据链路与安全</div><div class="data">高端商业集团自研数字化代表</div><div class="foot"><span class="lk app">集团方案</span></div></div>
+    <div class="pc"><div class="top"><span class="name">凯德 AI 商管 <span class="co other">凯德·自研</span></span><span class="st st-new">个性化推送</span></div><div class="pos">大数据洞察消费偏好+智能问答定向推送专属权益</div><div class="data">专门的数字化团队+AI 商管团队，数据安全最高优先级</div><div class="foot"><span class="lk app">集团方案</span></div></div>
+  </div>
+
+  <div class="realbox" style="margin-top:24px;border-top-color:var(--c-music);">
+    <h4>给商业运营方的选型提示</h4>
+    <div class="rcase" style="border-top:none;padding-top:0;">
+      <b>不要买一堆互不打通的孤立工具。</b>零售 AI 报告的核心判断是：AI 的威力在于"连接企业"而非"优化孤岛"——碎片化试点 + 数据不干净 = 技术债。对商场而言，务实路径是先把<b>底座（钉钉/飞书/企微其一）</b>定下来，再叠加<b>一个数据看板（客流+会员+销售打通）</b>，内容产出用大厂免费工具即可；<b>数据安全</b>是核心数据（客流/销售/会员）落地的第一道门槛，涉及这些数据的方案优先私有化部署。另据调研，AI 生成内容擅长炫技却难带来情感共鸣，"很少有人为一个 AI 生成的展专门跑一趟商场"——<b>AI 应服务于活动效率，而非活动本身的吸引力</b>。
+    </div>
+  </div>
+</section>
+
+<!-- ================= 核心判断 ================= -->
+<section id="insight">
+  <div class="sec-head"><span class="sec-no">03</span><h2>核心判断：从产品清单到战略结论</h2></div>
+  <p class="sec-desc">六条判断，每条按"证据 → 判断 → 启示"展开；证据均来自上方 AI 应用的时间线与图鉴。</p>
+
+  <div class="ins">
+    <div class="no">判断 ①</div>
+    <h3>同一赛道会分裂出"规模路线"与"收入路线"，别用一个尺子衡量</h3>
+    <div class="grid">
+      <span class="k">证据</span><span class="v">视频生成赛道：即梦追规模（App 端月活/下载居首、开拓普通用户），可灵追收入（约 70% 收入来自专业用户订阅，2025 全年营收约 <b>10.4 亿元</b>、ARR 已达 5 亿美元，2026.07 完成 <b>30 亿美元</b>融资、估值 180 亿美元）。同一赛道、两种活法，都成立。</span>
+      <span class="k j">判断</span><span class="v">AI 应用的成败不能只看月活。<span class="hl">规模路线看留存与破圈，收入路线看客单与续费</span>——用错尺子会误判，比如拿月活骂可灵、拿收入骂即梦都是错的。</span>
+      <span class="k q">启示</span><span class="v">评估任何 AI 应用（含自研产品）先问它选了哪条路线，再用<b>对应指标</b>考核。</span>
+    </div>
+  </div>
+
+  <div class="ins">
+    <div class="no">判断 ②</div>
+    <h3>独立 AI 应用只有两种活法：生态导流，或绑定高频刚需</h3>
+    <div class="grid">
+      <span class="k">证据</span><span class="v">活得好的：字节系靠豆包导流，把教育（爱学）、视频（即梦）、陪伴（猫箱）的第一名全占了；AQ、知医靠医疗刚需立足。死掉的墓碑区（妙鸭、妙刷、WOW、心响、月匣、智影）无一例外——靠新鲜感和投放起量，退潮即亡。</span>
+      <span class="k j">判断</span><span class="v"><span class="hl">流量从哪来、习惯靠什么养，是 AI 应用立项的第一性问题</span>。没有生态输血、又不在刚需场景里的独立产品，营销做得再猛也留不下用户。</span>
+      <span class="k q">启示</span><span class="v">立项先答这道题：<b>要么接入现有高频入口，要么锁定一个离不开的场景</b>；两者都没有，先别做独立 App。</span>
+    </div>
+  </div>
+
+  <div class="ins">
+    <div class="no">判断 ③</div>
+    <h3>竞争单位已从"一款应用"变成"一个矩阵"，单品窗口在关闭</h3>
+    <div class="grid">
+      <span class="k">证据</span><span class="v">字节把视觉生成做成矩阵（即梦+小云雀+星绘+海绵音乐），编程做成矩阵（Trae+MarsCode），教育医疗陪伴各有独立 App，26Q1 月活 TOP20 独占 <b>7 席</b>；阿里编程线一口气 Qoder+Qoder CN+通义万相多产品并行。</span>
+      <span class="k j">判断</span><span class="v">大厂拼的是矩阵完整度与相互导流摊薄的获客成本，<span class="hl">单点应用在正面赛道越来越难独活</span>。</span>
+      <span class="k q">启示</span><span class="v">不具备矩阵能力，就避开大厂矩阵的正面赛道——做大厂懒得做的<b>深垂直</b>，或做给矩阵供血的 <b>B 端能力/模型 API</b>。</span>
+    </div>
+  </div>
+
+  <div class="ins">
+    <div class="no">判断 ④</div>
+    <h3>C 端通用 Agent 是伪命题，企业级"带权限的 Agent"才是真机会</h3>
+    <div class="grid">
+      <span class="k">证据</span><span class="v">百度心响（C 端通用智能体）上线一年即边缘化；而阿里悟空反向——Agent 自动继承企业权限、原生操作钉钉能力。2026.3.16 阿里成立 <b>ATH 事业群</b>（吴泳铭直管），把通义/千问/悟空/AI 创新等 AI 拼图统合，企业 Agent 是其应用侧重心。</span>
+      <span class="k j">判断</span><span class="v">C 端用户没有足够复杂的任务喂给通用 Agent，企业有；权限、数据、审计这些"无聊的东西"<span class="hl">恰恰构成企业 Agent 的护城河</span>。</span>
+      <span class="k q">启示</span><span class="v">2026 下半年最值得跟踪的单一变量：<b>阿里 ATH 统合 vs 腾讯全家桶的企业 Agent 之战</b>。做 Agent 应优先选有权限、有数据、有工作流的场景。</span>
+    </div>
+  </div>
+
+  <div class="ins">
+    <div class="no">判断 ⑤</div>
+    <h3>商业化拐点已过：问题从"AI 能不能赚钱"变成"嵌进了谁的工作流"</h3>
+    <div class="grid">
+      <span class="k">证据</span><span class="v">可灵以 <b>180 亿美元</b>估值完成 30 亿美元融资、ARR 5 亿美元、京东数字人带出 <b>140 亿 GMV</b>、腾讯 CodeBuddy 提价近 3 倍照常执行、智谱 API 提价后调用量反增。这些都是应用层的真金白银，不是概念。</span>
+      <span class="k j">判断</span><span class="v">嵌进工作流的应用能提价，没嵌进去的送红包也留不住人。<span class="hl">估值锚正从 DAU 切换到 Token 调用量与续费率</span>。</span>
+      <span class="k q">启示</span><span class="v">审视自身 AI 投入：现在算成本中心还是收入中心？<b>嵌入工作流的路径与拐点计划是什么？</b></span>
+    </div>
+  </div>
+
+  <div class="ins">
+    <div class="no">判断 ⑥</div>
+    <h3>两个低成本战略期权：出海回流验证 + 国产算力/合规叙事</h3>
+    <div class="grid">
+      <span class="k">证据</span><span class="v">Trae、Qoder、MuleRun 都是"先出海（甚至隐身）验证、成了再回国"；阿里把编程线拆成 Qoder（海外）与 Qoder CN（国内合规、国产模型、私有 VPC、等保认证）两条，精准适配两个市场的不同诉求。</span>
+      <span class="k j">判断</span><span class="v">出海先行 = 用海外做低成本 A/B 测试，规避国内舆论与竞争；<span class="hl">"国产模型+国内部署+合规认证"在政企市场是硬通货</span>，溢价只会上升。</span>
+      <span class="k q">启示</span><span class="v">预判爆款别只盯国内应用商店，<b>盯海外榜单上的中国团队产品</b>；做政企生意把合规/算力自主当第一卖点。</span>
+    </div>
+  </div>
+
+  <div class="brief">
+    <h3>向上汇报建议：三段式，落点在<em>"我们该怎么办"</em></h3>
+    <p>调研汇报最忌"我看了很多"，最好是"我看完之后认为我们该怎么办"。建议结构：</p>
+    <div class="steps">
+      <div class="step"><div class="s">STEP 1 · 事实</div><div class="t">用图谱讲清格局（5分钟）</div><p>时间线三阶段（视觉先行→编程出海→企业级 Agent）→ 九大赛道谁在领跑。只讲结构，不逐个念产品。</p></div>
+      <div class="step"><div class="s">STEP 2 · 判断</div><div class="t">挑 3 条与业务最相关的判断</div><p>通常是 ②独立 vs 生态、④企业 Agent 机会、⑤商业化拐点——按自身业务取舍展开。</p></div>
+      <div class="step"><div class="s">STEP 3 · 行动</div><div class="t">回答三个自问</div><p>我们的用户高频在哪个入口，该嵌入还是自建？有没有大厂矩阵覆盖不到的深垂直？我们的 AI 投入何时从成本中心转为收入中心？</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  收录口径：仅独立 AI 应用（独立 App / 独立平台 / 独立硬件 / 企业方案），<b>不含通用助手</b>（豆包/千问/元宝/文心助手/DeepSeek/Kimi 等）及 App 内嵌功能。「企业场景专题」聚焦商业广场/购物中心活动运营，涵盖头部大厂协同/BI/营销产品与商业地产垂直厂商（Aibee、汇纳、海鼎、明源云沃享等）。官网链接经检索核实，「App/集团方案/内部工具」标记者无公开网页入口，具体以各产品最新官方信息为准。数据来源：QuestMobile 2026Q1《AI应用价值榜》、赢商tech/36氪 2026.03 商业地产 AI 调研、36氪·量子位智库、IDC、中国购物中心数字化厂商全景报告、各公司官方披露，截至 2026 年 7 月。仅供调研参考，链接可能随产品调整而变化。
+</footer>
+
+</div>
+</body>
+</html>
